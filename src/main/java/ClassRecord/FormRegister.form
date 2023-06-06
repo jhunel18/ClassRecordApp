@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ClassRecord.FormRegister">
+  <grid id="27dc6" binding="registerPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="961bd" class="javax.swing.JLabel" binding="lblUsername">
+        <constraints/>
+        <properties>
+          <text value="Username"/>
+        </properties>
+      </component>
+      <component id="eb7bf" class="javax.swing.JTextField" binding="txtUsername">
+        <constraints/>
+        <properties>
+          <columns value="15"/>
+        </properties>
+      </component>
+      <component id="b86a" class="javax.swing.JLabel" binding="lblUserPassword">
+        <constraints/>
+        <properties>
+          <text value="UserPassword"/>
+        </properties>
+      </component>
+      <component id="763c7" class="javax.swing.JPasswordField" binding="txtPassword">
+        <constraints/>
+        <properties>
+          <columns value="15"/>
+        </properties>
+      </component>
+      <component id="3b978" class="javax.swing.JButton" binding="registerButton" default-binding="true">
+        <constraints/>
+        <properties>
+          <text value="Register"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
