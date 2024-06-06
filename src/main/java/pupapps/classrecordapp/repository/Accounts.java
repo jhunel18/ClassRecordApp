@@ -4,6 +4,7 @@
  */
 package pupapps.classrecordapp.repository;
 
+import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,13 +43,14 @@ public class Accounts {
     //Method for Inserting User to DB
      public void insertUser(String fname, String lname, String username, String password) throws SQLException {
         String insertQuery = "INSERT INTO users (fname, lname, username, password) VALUES (?, ?, ?, ?)";
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());  // Hash the password
         try (Connection conn = dbConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
 
             pstmt.setString(1, fname);
             pstmt.setString(2, lname);
             pstmt.setString(3, username);
-            pstmt.setString(4, password);
+            pstmt.setString(4, hashedPassword);
             pstmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Account successfully created");
@@ -60,19 +62,24 @@ public class Accounts {
      
     //Method for login user
     public boolean loginUser(String username, String password) throws SQLException{
-         String loginQuery = "SELECT COUNT(*) FROM users WHERE username = ? AND password = ?";
+         String loginQuery = "SELECT password FROM users WHERE username = ?";
         try (Connection conn = dbConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(loginQuery)) {
 
             pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            
 
             try (ResultSet rs = pstmt.executeQuery()) {
-                if (!rs.next() || rs.getInt(1) <= 0) {
-                    return false;
-                } else {
-                    return true;
+                if (rs.next()) {
+                    String storedHashedPassword = rs.getString("password");
+                    if (BCrypt.checkpw(password, storedHashedPassword)) {
+                        return true;  // Password matches
+                    }
+                    else{
+                        return false;
+                    }
                 }
+                return false;  // Username not found or password does not match
             }
         } catch (SQLException e) {
             System.out.println("Error logging in: " + e.getMessage());
