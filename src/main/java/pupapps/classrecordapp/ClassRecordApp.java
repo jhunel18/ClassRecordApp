@@ -7,8 +7,7 @@ package pupapps.classrecordapp;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import pupapps.classrecordapp.repository.DbConnector;
+
 
 
 /**
@@ -16,17 +15,14 @@ import pupapps.classrecordapp.repository.DbConnector;
  * @author lenovo
  */
 public class ClassRecordApp {
-
     public static void main(String[] args)  {
+       UserManagement userManagement = new UserManagement();
        
-        LoginForm loginForm = new LoginForm();
-        loginForm.setVisible(true);
-//        DbConnector dbconn = new DbConnector();
-//        dbconn.getConnection();
-//                } catch (SQLException ex) {
-//                    ex.getMessage();
-//                }
-        
+        try {
+            userManagement.showAppropriateForm();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassRecordApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }

@@ -8,7 +8,6 @@ package pupapps.classrecordapp.repository;
  *
  * @author lenovo
  */
-public class Products {
-    
+public class Classes {
     
 }

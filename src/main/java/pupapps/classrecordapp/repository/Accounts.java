@@ -6,6 +6,7 @@ package pupapps.classrecordapp.repository;
 
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,13 +18,13 @@ import javax.swing.JOptionPane;
  * @author lenovo
  */
 public class Accounts {
-    private final DbConnector dbConnector;
+    private static DbConnector dbConnector;
 
     public Accounts(DbConnector dbConnector) {
-        this.dbConnector = dbConnector;
+        Accounts.dbConnector = dbConnector;
     }
     //Method for Creating User's Table
-    public void createUsersTable() throws SQLException {
+    public static void createUsersTable() throws SQLException {
         String sql = """
                      CREATE TABLE IF NOT EXISTS users (
                          id SERIAL PRIMARY KEY,
@@ -38,6 +39,26 @@ public class Accounts {
             System.out.println("Error creating table: " + e.getMessage());
             throw e;  // Rethrow exception to ensure calling code is aware of the failure
         }
+    }
+    public static boolean doesTableExist(String tableName) throws SQLException {
+        try (Connection conn = dbConnector.getConnection()) {
+            DatabaseMetaData metaData = conn.getMetaData();
+            try (ResultSet rs = metaData.getTables(null, null, tableName, null)) {
+                return rs.next();
+            }
+        }
+    }
+    
+    public static boolean isUserTableEmpty() throws SQLException {
+        String sql = "SELECT COUNT(*) AS rowcount FROM users";
+        try (Connection conn = dbConnector.getConnection(); 
+             Statement stmt = conn.createStatement(); 
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getInt("rowcount") == 0;
+            }
+        }
+        return true; // If there is an error, assume the table is empty
     }
     
     //Method for Inserting User to DB

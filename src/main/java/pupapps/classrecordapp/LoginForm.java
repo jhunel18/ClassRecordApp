@@ -51,7 +51,6 @@ public class LoginForm extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         btnSubmit = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        btnCreateAccount = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,24 +90,6 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        btnCreateAccount.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        btnCreateAccount.setForeground(new java.awt.Color(0, 0, 204));
-        btnCreateAccount.setText("Create an Account?");
-        btnCreateAccount.setAutoscrolls(true);
-        btnCreateAccount.setBorderPainted(false);
-        btnCreateAccount.setContentAreaFilled(false);
-        btnCreateAccount.setDefaultCapable(false);
-        btnCreateAccount.setFocusPainted(false);
-        btnCreateAccount.setFocusable(false);
-        btnCreateAccount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCreateAccount.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnCreateAccount.setMargin(new java.awt.Insets(2, 0, 3, 14));
-        btnCreateAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateAccountActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("Login User");
@@ -124,7 +105,6 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreateAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSubmit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,9 +133,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnClear)
                     .addComponent(btnSubmit))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCreateAccount)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,13 +170,6 @@ public class LoginForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSubmitActionPerformed
-
-    private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
-        // TODO add your handling code here:
-        RegisterForm registerForm = new RegisterForm();
-        registerForm.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,7 +208,6 @@ public class LoginForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnCreateAccount;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
