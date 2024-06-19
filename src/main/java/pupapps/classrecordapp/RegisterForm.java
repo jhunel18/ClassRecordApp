@@ -5,8 +5,6 @@
 package pupapps.classrecordapp;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import pupapps.classrecordapp.repository.Accounts;
 import pupapps.classrecordapp.repository.DbConnector;
 

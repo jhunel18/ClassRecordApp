@@ -66,7 +66,7 @@ public class Accounts {
         String insertQuery = "INSERT INTO users (fname, lname, username, password) VALUES (?, ?, ?, ?)";
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());  // Hash the password
         try (Connection conn = dbConnector.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
+            PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
 
             pstmt.setString(1, fname);
             pstmt.setString(2, lname);
