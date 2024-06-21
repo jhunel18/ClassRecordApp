@@ -40,7 +40,7 @@ public class RegisterForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCancel = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,12 +56,12 @@ public class RegisterForm extends javax.swing.JFrame {
         setName("registerForm"); // NOI18N
         setResizable(false);
 
-        btnCancel.setBackground(new java.awt.Color(255, 255, 204));
-        btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(255, 255, 204));
+        btnExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -89,6 +89,11 @@ public class RegisterForm extends javax.swing.JFrame {
         });
 
         txtFname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 204, 255), 2, true));
+        txtFname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFnameActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 102, 255));
@@ -109,14 +114,14 @@ public class RegisterForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(65, 65, 65)
+                            .addGap(71, 71, 71)
                             .addComponent(btnSubmit)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -138,12 +143,12 @@ public class RegisterForm extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -162,22 +167,20 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(98, 98, 98))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        LoginForm loginForm = new LoginForm();
-        loginForm.setVisible(true);
         this.setVisible(false);
 
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
        fname = txtFname.getText();
@@ -187,12 +190,19 @@ public class RegisterForm extends javax.swing.JFrame {
        
         try {
             accounts.insertUser(fname, lname, username, password);
+            LoginForm loginForm = new LoginForm();
+            loginForm.setVisible(true);
+            this.setVisible(false);
         } catch (SQLException ex) {
             ex.getMessage();
         }
        
        
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtFnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFnameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,7 +240,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
